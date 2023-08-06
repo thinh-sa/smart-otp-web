@@ -4,7 +4,7 @@
   "description": "Time based OTP demo with react.js, elemental UI front end and koa.js server and speakeasy",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "nodemon .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "yickling",
@@ -22,5 +22,8 @@
   "engines": {
     "node": "18.16.1",
     "yarn": "1.22.19"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }

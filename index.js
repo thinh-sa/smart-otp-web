@@ -1,11 +1,11 @@
-const Koa = require('koa');
-const speakeasy = require('speakeasy');
-const qrcode = require('qrcode');
-const cors = require('kcors');
-const bodyParser = require('koa-bodyparser');
-const koaStatic = require('koa-static');
-const mount = require('koa-mount');
-const router = require('koa-router')();
+const Koa = require("koa");
+const speakeasy = require("speakeasy");
+const qrcode = require("qrcode");
+const cors = require("kcors");
+const bodyParser = require("koa-bodyparser");
+const koaStatic = require("koa-static");
+const mount = require("koa-mount");
+const router = require("koa-router")();
 
 const validEmail = "tester@test.com";
 const validPassword = "test";
@@ -13,46 +13,45 @@ const validPassword = "test";
 var secret;
 
 const app = new Koa();
-app.use(cors())
-app.use(bodyParser())
+app.use(cors());
+app.use(bodyParser());
 
 router
-  .post('/register-otp', async (ctx, next) => {
-    secret = speakeasy.generateSecret();// Get the data URL of the authenticator URL
+  .post("/register-otp", async (ctx, next) => {
+    secret = speakeasy.generateSecret(); // Get the data URL of the authenticator URL
     img_data = await new Promise((resolve, reject) => {
-      qrcode.toDataURL(secret.otpauth_url, function(err, data_url) {
+      qrcode.toDataURL(secret.otpauth_url, function (err, data_url) {
         resolve(data_url);
       });
     });
 
     ctx.response.body = img_data;
   })
-  .post('/login', async (ctx, next) => {
+  .post("/login", async (ctx, next) => {
     const { email, password, userToken } = ctx.request.body;
-
+    console.log(userToken);
     if (!secret) {
-      ctx.throw(401, "uninitialized");
+      ctx.throw(401, "Uninitialized QR Code");
     }
 
-    if (email !== validEmail)
-      ctx.throw(401, "badEmail");
+    // if (email !== validEmail)
+    //   ctx.throw(401, "badEmail");
 
-    if (password !== validPassword)
-      ctx.throw(401, "badPassword");
+    // if (password !== validPassword)
+    //   ctx.throw(401, "badPassword");
 
-    const verified = speakeasy.totp.verify({ secret: secret.base32,
-                                         encoding: 'base32',
-                                         token: userToken });
+    const verified = speakeasy.totp.verify({
+      secret: secret.base32,
+      encoding: "base32",
+      token: userToken,
+    });
 
-    if (!verified)
-      ctx.throw(401, "badUserToken");
+    if (!verified) ctx.throw(401, "User Token is Invalid");
 
-    ctx.response.body = "ok";
+    ctx.response.body = "User Token is Valid";
   });
 
-app
-  .use(mount(koaStatic('./client/build')))
-  .use(router.routes());
+app.use(mount(koaStatic("./client/build"))).use(router.routes());
 
 console.log("Server now running on localhost:3000");
 console.log("Open browser to http://localhost:3000 to try login with an OTP");
