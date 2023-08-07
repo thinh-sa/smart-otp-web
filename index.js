@@ -51,7 +51,7 @@ router
     ctx.response.body = "User Token is Valid";
   });
 
-app.use(mount(koaStatic("./client/build"))).use(router.routes());
+app.use(mount(koaStatic("./client-v1/build"))).use(router.routes());
 
 console.log("Server now running on localhost:3000");
 console.log("Open browser to http://localhost:3000 to try login with an OTP");
