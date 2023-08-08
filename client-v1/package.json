@@ -6,7 +6,10 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "axios": "^1.4.0",
+    "buffer": "^6.0.3",
     "bulma": "^0.9.4",
+    "crypto-browserify": "^3.12.0",
     "elemental": "^0.6.1",
     "hi-base32": "^0.5.1",
     "less": "^4.2.0",
@@ -16,7 +19,10 @@
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "speakeasy": "^2.0.0",
     "styled-components": "^6.0.7",
+    "thirty-two": "^1.0.2",
+    "url": "^0.11.1",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
@@ -46,5 +52,8 @@
   "engines": {
     "node": "18.16.1",
     "yarn": "1.22.19"
+  },
+  "browser": {
+    "crypto": false
   }
 }

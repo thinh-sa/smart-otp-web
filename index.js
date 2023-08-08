@@ -1,3 +1,4 @@
+require("dotenv").config();
 const Koa = require("koa");
 const speakeasy = require("speakeasy");
 const qrcode = require("qrcode");
@@ -6,6 +7,9 @@ const bodyParser = require("koa-bodyparser");
 const koaStatic = require("koa-static");
 const mount = require("koa-mount");
 const router = require("koa-router")();
+
+const PORT = process.env.PORT;
+const API_BASE_URL = process.env.API_BASE_URL;
 
 const validEmail = "tester@test.com";
 const validPassword = "test";
@@ -17,7 +21,7 @@ app.use(cors());
 app.use(bodyParser());
 
 router
-  .post("/register-otp", async (ctx, next) => {
+  .post(`/register-otp`, async (ctx, next) => {
     secret = speakeasy.generateSecret(); // Get the data URL of the authenticator URL
     img_data = await new Promise((resolve, reject) => {
       qrcode.toDataURL(secret.otpauth_url, function (err, data_url) {
@@ -53,6 +57,8 @@ router
 
 app.use(mount(koaStatic("./client-v1/build"))).use(router.routes());
 
-console.log("Server now running on localhost:3000");
-console.log("Open browser to http://localhost:3000 to try login with an OTP");
-app.listen(3000);
+console.log(`Server now running on localhost:${PORT}`);
+console.log(
+  `Open browser to http://localhost:${PORT} to try login with an OTP`
+);
+app.listen(PORT);

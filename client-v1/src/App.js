@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "bulma";
 
-import TotpGenerator from "./components/TotpGenerator.js";
+import TotpGenerator from "./components/Generator/index.js";
 import Faq from "./components/faq.js";
 import VerifierTotp from "./components/Verifier/index.js";
+import AppContext from "./contexts";
 
 function App() {
+  const [contextValue, setContextValue] = useState({
+    imageQrCode: "Hello from Context!",
+    updateImageQrCode: (newImageQrCode) => {
+      setContextValue((prevValue) => ({
+        ...prevValue,
+        imageQrCode: newImageQrCode,
+      }));
+    },
+  });
+
   return (
-    <>
+    <AppContext.Provider value={contextValue}>
       <section className="section">
         <div className="container">
           <h1 className="title has-text-centered">TOTP Authenticator</h1>
@@ -44,7 +55,7 @@ function App() {
           </p>
         </div>
       </footer> */}
-    </>
+    </AppContext.Provider>
   );
 }
 
