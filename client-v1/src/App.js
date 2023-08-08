@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import "bulma";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import TotpGenerator from "./components/Generator/index.js";
 import Faq from "./components/faq.js";
 import VerifierTotp from "./components/Verifier/index.js";
 import AppContext from "./contexts";
+import NavBar from "./components/NavBar/index.js";
+import TOTP from "./components/TOTP/index.js";
 
 function App() {
   const [contextValue, setContextValue] = useState({
@@ -18,16 +21,26 @@ function App() {
   });
 
   return (
-    <AppContext.Provider value={contextValue}>
+    <>
+      {/* <AppContext.Provider value={contextValue}> */}
       <section className="section">
         <div className="container">
-          <h1 className="title has-text-centered">TOTP Authenticator</h1>
+          <h1 className="title has-text-centered">Smart OTP Authenticator</h1>
           <h2 className="subtitle has-text-centered pt-2">
-            The One-time Password Generator for when you have lost everything.
+            The One-time Password Authenticator Demo.
           </h2>
         </div>
       </section>
-      <section className="section">
+      <Router>
+        <NavBar />
+
+        <Routes>
+          <Route exact path="/" Component={TOTP} />
+          <Route path="/totp" Component={TOTP} />
+          <Route path="/ocra" Component={TOTP} />
+        </Routes>
+      </Router>
+      {/* <section className="section">
         <div
           className="container is-centered"
           style={{ maxWidth: "400px", marginTop: "-50px" }}
@@ -42,7 +55,7 @@ function App() {
         >
           <VerifierTotp />
         </div>
-      </section>
+      </section> */}
       {/* <footer class="footer">
         <div class="content has-text-centered">
           <p>
@@ -55,7 +68,8 @@ function App() {
           </p>
         </div>
       </footer> */}
-    </AppContext.Provider>
+      {/* </AppContext.Provider> */}
+    </>
   );
 }
 

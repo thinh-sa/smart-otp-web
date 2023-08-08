@@ -12,41 +12,6 @@ import "./TotpVerifier.css";
 import styled from "styled-components";
 import AppContext from "../../contexts";
 
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const Col = styled.div`
-  flex: ${(props) => props.sm};
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-`;
-
-const FormField = styled.div`
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: row;
-  ${(props) => props.offsetAbsentLabel && "margin-top: 2rem;"}
-`;
-
-const FormInput = styled.input`
-  padding: 0.5rem;
-  font-size: 1rem;
-`;
-
-const Button = styled.button`
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  background-color: ${(props) => (props.disabled ? "#ccc" : "#007bff")};
-  color: #fff;
-  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
-`;
-
 const Alert = styled.div`
   padding: 1rem;
   margin-bottom: 1rem;
@@ -63,7 +28,7 @@ const Alert = styled.div`
 `;
 
 export default () => {
-  const { imageQrCode, updateImageQrCode } = useContext(AppContext);
+  // const { imageQrCode, updateImageQrCode } = useContext(AppContext);
   // console.log(`imageQrCode::`, imageQrCode);
   const [inputCode, setInputCode] = useState("");
   const [inputUserId, setInputUserId] = useState("");
@@ -85,10 +50,6 @@ export default () => {
   //       setImageCode(res?.data?.data?.qrCode);
   //     });
   // }, []);
-
-  // useEffect(() => {
-  //   setImageCode(imageQrCode);
-  // }, [imageCode]);
 
   const updateInputCode = (e) => {
     setInputCode(e.target.value);
@@ -172,6 +133,7 @@ export default () => {
                 onChange={updateDeviceId}
               />
               <input
+                style={{ padding: "8px 12px" }}
                 type="text"
                 placeholder="User OTP"
                 value={inputCode}
@@ -181,7 +143,7 @@ export default () => {
             <div className="control has-text-centered pt-3 mt-4">
               <button
                 disabled={!validated}
-                className="button is-primary"
+                className="button is-link"
                 type="submit"
                 onClick={verifyTotp}
               >

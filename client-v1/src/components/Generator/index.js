@@ -24,7 +24,7 @@ export default () => {
 
   const inputRef = useRef(null);
 
-  const { imageQrCode, updateImageQrCode } = useContext(AppContext);
+  //   const { imageQrCode, updateImageQrCode } = useContext(AppContext);
 
   useEffect(() => {
     if (secret) {
