@@ -142,7 +142,7 @@ export default () => {
               display: "inline-block",
               maxHeight: "244px",
               maxWidth: "244px",
-              marginLeft: "75px",
+              margin: "0 auto",
             }}
           />
           {imageCode && (
