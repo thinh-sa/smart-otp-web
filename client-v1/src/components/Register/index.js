@@ -56,7 +56,10 @@ export default () => {
           } else {
             setValidated(true);
             setImageCode(res?.data?.data?.qrCode);
-            setMessage(`Secret Code: ${res?.data?.data?.secretKey}`);
+            setMessage(
+              `User ID: ${res?.data?.data?.userId}. Device ID: ${res?.data?.data?.deviceId}. App ID: ${res?.data?.data?.appId}. 
+              Secret Code: ${res?.data?.data?.secretKey}`
+            );
           }
         });
     } catch (err) {
@@ -110,17 +113,27 @@ export default () => {
           </div>
           <div className="control has-text-centered pt-3 mt-4">
             <button
-              className="button is-primary"
+              className="button is-info"
               type="submit"
               onClick={handleSubmit}
             >
-              Generate
+              Regsiter SmartOTP
             </button>
-            {message && <p style={{ marginTop: "10px" }}>{message}</p>}
+            {message && (
+              <p
+                className="has-text-centered"
+                style={{ marginTop: "10px", fontWeight: "bold" }}
+              >
+                {message}
+              </p>
+            )}
           </div>
         </form>
 
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div
+          className="has-text-centered"
+          style={{ display: "flex", flexDirection: "column" }}
+        >
           <img
             id="qrCode"
             alt=""

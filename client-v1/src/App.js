@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import "bulma";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import TotpGenerator from "./components/Generator/index.js";
+import TotpGenerator from "./components/Register/index.js";
 import Faq from "./components/faq.js";
-import VerifierTotp from "./components/Verifier/index.js";
+import VerifierTotp from "./components/TOTP/Verifier/index.js";
 import AppContext from "./contexts";
 import NavBar from "./components/NavBar/index.js";
 import TOTP from "./components/TOTP/index.js";
+import OCRA from "./components/OCRA/index.js";
 
 function App() {
   const [contextValue, setContextValue] = useState({
@@ -37,7 +38,7 @@ function App() {
         <Routes>
           <Route exact path="/" Component={TOTP} />
           <Route path="/totp" Component={TOTP} />
-          <Route path="/ocra" Component={TOTP} />
+          <Route path="/ocra" Component={OCRA} />
         </Routes>
       </Router>
       {/* <section className="section">

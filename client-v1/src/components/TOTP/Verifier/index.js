@@ -10,7 +10,7 @@ import axios from "axios";
 import logo from "./logo.svg";
 import "./TotpVerifier.css";
 import styled from "styled-components";
-import AppContext from "../../contexts";
+import AppContext from "../../../contexts";
 
 const Alert = styled.div`
   padding: 1rem;

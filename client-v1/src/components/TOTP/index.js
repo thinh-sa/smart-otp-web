@@ -1,7 +1,7 @@
 import React from "react";
 
-import TotpGenerator from "../Generator/index";
-import VerifierTotp from "../Verifier/index";
+import TotpGenerator from "../Register/index";
+import VerifierTotp from "./Verifier/index";
 
 function TOTP() {
   return (
