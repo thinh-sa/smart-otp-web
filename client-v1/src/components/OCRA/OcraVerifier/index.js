@@ -5,7 +5,7 @@ function OcraVerifier({ crCode }) {
   const [userId, setUserId] = useState();
   const [deviceId, setDeviceId] = useState();
   //   const [crCode, setCrCode] = useState(crCode);
-  const [userOTP, setUserOTP] = useState("");
+  const [userOtp, setuserOtp] = useState("");
   const [messageInfo, setMessageInfo] = useState("");
 
   const handleVerifyOTPOcra = (e) => {
@@ -16,7 +16,7 @@ function OcraVerifier({ crCode }) {
           userId,
           deviceId,
           crCode,
-          userOTP,
+          userOtp,
         })
         .then((res) => {
           //   console.log(res?.data);
@@ -74,8 +74,8 @@ function OcraVerifier({ crCode }) {
               style={{ padding: "8px 12px" }}
               type="text"
               placeholder="User OTP"
-              value={userOTP}
-              onChange={(e) => setUserOTP(e.target.value)}
+              value={userOtp}
+              onChange={(e) => setuserOtp(e.target.value)}
             />
             {/* </div> */}
           </div>

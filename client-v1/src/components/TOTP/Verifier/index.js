@@ -76,7 +76,7 @@ export default () => {
       body: JSON.stringify({
         userId: inputUserId,
         deviceId: inputDeviceId,
-        userToken: inputCode,
+        userOtp: inputCode,
       }),
     })
       .then((response) => {

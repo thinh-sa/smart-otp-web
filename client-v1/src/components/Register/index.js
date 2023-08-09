@@ -52,7 +52,7 @@ export default () => {
           // console.log(res);
           if (!res?.data?.ok) {
             setValidated(false);
-            setMessage("Input không hợp lệ");
+            setMessage(res?.data?.message);
           } else {
             setValidated(true);
             setImageCode(res?.data?.data?.qrCode);
