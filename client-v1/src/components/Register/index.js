@@ -26,14 +26,14 @@ export default () => {
 
   //   const { imageQrCode, updateImageQrCode } = useContext(AppContext);
 
-  useEffect(() => {
-    if (secret) {
-      const interval = setInterval(() => {
-        setTotp(generateToken(secret));
-      }, 2000);
-      return () => clearInterval(interval);
-    }
-  }, [secret]);
+  // useEffect(() => {
+  //   if (secret) {
+  //     const interval = setInterval(() => {
+  //       setTotp(generateToken(secret));
+  //     }, 2000);
+  //     return () => clearInterval(interval);
+  //   }
+  // }, [secret]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

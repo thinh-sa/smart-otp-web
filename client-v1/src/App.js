@@ -9,6 +9,7 @@ import AppContext from "./contexts";
 import NavBar from "./components/NavBar/index.js";
 import TOTP from "./components/TOTP/index.js";
 import OCRA from "./components/OCRA/index.js";
+import Home from "./components/Home/index.js";
 
 function App() {
   const [contextValue, setContextValue] = useState({
@@ -36,7 +37,7 @@ function App() {
         <NavBar />
 
         <Routes>
-          <Route exact path="/" Component={TOTP} />
+          <Route exact path="/" Component={Home} />
           <Route path="/totp" Component={TOTP} />
           <Route path="/ocra" Component={OCRA} />
         </Routes>

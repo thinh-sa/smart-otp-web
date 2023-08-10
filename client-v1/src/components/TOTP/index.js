@@ -2,6 +2,7 @@ import React from "react";
 
 import TotpGenerator from "../Register/index";
 import VerifierTotp from "./Verifier/index";
+import Home from "../Home/index";
 
 function TOTP() {
   return (
@@ -14,6 +15,9 @@ function TOTP() {
           <TotpGenerator />
         </div>
       </section>
+
+      <Home />
+
       <section className="section">
         <div
           className="container"
