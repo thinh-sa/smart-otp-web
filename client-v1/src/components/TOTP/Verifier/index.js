@@ -79,7 +79,7 @@ export default () => {
         userOtp: inputCode,
       }),
     })
-      .then((response) => {
+      .then(async (response) => {
         if (response.status === 401) {
           return response.text().then((err) => {
             throw new Error(err);
@@ -88,8 +88,13 @@ export default () => {
         return response.text();
       })
       .then((result) => {
-        setInfoMessage(result);
-        setErrorMessage("");
+        if (!result.ok) {
+          setErrorMessage(result);
+          setInfoMessage("");
+        } else {
+          setInfoMessage(result);
+          setErrorMessage("");
+        }
       })
       .catch((err) => {
         setErrorMessage(err.message);
