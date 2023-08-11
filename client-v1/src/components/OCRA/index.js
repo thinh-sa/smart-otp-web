@@ -115,8 +115,9 @@ function OCRA() {
       <hr className="is-divider" />
       <div style={{ flexDirection: "row" }}>
         <form onSubmit={handleGenOTPOcra}>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div className="is-flex justify-content-center align-items-center">
             <input
+              hidden
               style={{ padding: "8px 12px" }}
               type="text"
               placeholder="CR Code"
@@ -124,7 +125,7 @@ function OCRA() {
               onChange={(e) => setCrCode(e.target.value)}
             />
             <input
-              style={{ padding: "8px 12px" }}
+              style={{ padding: "8px 12px", margin: "0 auto" }}
               type="text"
               placeholder="PIN"
               value={pin}

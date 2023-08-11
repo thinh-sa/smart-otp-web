@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import QRCode from "qrcode.react";
-// import speakeasy from "speakeasy";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 import TOTP from "../../api/totp.js";
+import IntervalCircleOtp from "../Common/IntervalCircleOtp.js";
 
 const TOTPTokenGenerator = () => {
   const [secret, setSecret] = useState("");
@@ -15,7 +17,7 @@ const TOTPTokenGenerator = () => {
   useEffect(() => {
     const generateToken = () => {
       if (secret) {
-        const currentTime = Math.floor(Date.now() / intervalDuration);
+        // const currentTime = Math.floor(Date.now() / intervalDuration);
         // const generatedToken = speakeasy.totp({
         //   secret: secret,
         //   encoding: "base32",
@@ -36,6 +38,7 @@ const TOTPTokenGenerator = () => {
       };
     } catch (err) {
       setError(err);
+      throw err;
     }
   }, [secret]);
 
@@ -57,6 +60,15 @@ const TOTPTokenGenerator = () => {
             {secret && (
               <div>
                 <p>Current Token: {error ? error : token}</p>
+                <div
+                  className="has-text-centered mx-auto my-6"
+                  style={{ width: "100px", height: "100px" }}
+                >
+                  <IntervalCircleOtp
+                    intervalDuration={intervalDuration / 1000}
+                    token={token}
+                  />
+                </div>
                 <QRCode value={`otpauth://totp/MyApp?secret=${secret}`} />
               </div>
             )}

@@ -6,10 +6,10 @@ import Home from "../Home/index";
 
 function TOTP() {
   return (
-    <div style={{ marginTop: "50px" }}>
+    <div>
       <section className="section">
         <div
-          className="container is-centered"
+          className="container is-centered mt-2"
           style={{ maxWidth: "400px", marginTop: "-50px" }}
         >
           <TotpGenerator />
