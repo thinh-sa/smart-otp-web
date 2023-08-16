@@ -81,18 +81,18 @@ export default () => {
     })
       .then(async (response) => {
         if (response.status === 401) {
-          return response.text().then((err) => {
+          return response.json().then((err) => {
             throw new Error(err);
           });
         }
-        return response.text();
+        return response.json();
       })
       .then((result) => {
-        if (!result.ok) {
-          setErrorMessage(result);
+        if (result.code !== "000000") {
+          setErrorMessage(JSON.stringify(result));
           setInfoMessage("");
         } else {
-          setInfoMessage(result);
+          setInfoMessage(JSON.stringify(result));
           setErrorMessage("");
         }
       })

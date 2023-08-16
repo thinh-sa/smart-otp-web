@@ -20,7 +20,7 @@ function OcraVerifier({ crCode }) {
         })
         .then((res) => {
           //   console.log(res?.data);
-          if (!res?.data?.ok) {
+          if (res?.data?.code !== "000000") {
             setMessageInfo(res?.data?.message);
           } else {
             setMessageInfo(`Status: ${res?.data?.message}`);
@@ -88,7 +88,13 @@ function OcraVerifier({ crCode }) {
               Verify OTP
             </button>
             {messageInfo && (
-              <p style={{ marginTop: "10px", fontWeight: "bold" }}>
+              <p
+                style={{
+                  marginTop: "10px",
+                  fontWeight: "bold",
+                  marginBottom: "50px",
+                }}
+              >
                 {messageInfo}
               </p>
             )}

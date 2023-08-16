@@ -8,7 +8,7 @@ const IntervalCircleOtp = ({ intervalDuration = 30, token }) => {
 
   useEffect(() => {
     setCurrentToken(token);
-    setTimeLeft(30); // Reset the countdown
+    setTimeLeft(intervalDuration); // Reset the countdown
   }, [token]);
 
   useEffect(() => {

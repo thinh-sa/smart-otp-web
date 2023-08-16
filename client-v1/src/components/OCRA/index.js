@@ -23,7 +23,7 @@ function OCRA() {
           toAccount, // "+84852412699"
         })
         .then((res) => {
-          //   console.log(res?.data);
+          // console.log(res?.data);
           if (res?.data?.code !== "000000") {
             setMessageInfoCR(res?.data?.message);
           } else {

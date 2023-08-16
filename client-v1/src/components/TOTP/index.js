@@ -10,7 +10,7 @@ function TOTP() {
       <section className="section">
         <div
           className="container is-centered mt-2"
-          style={{ maxWidth: "400px", marginTop: "-50px" }}
+          style={{ maxWidth: "700px", marginTop: "-50px" }}
         >
           <TotpGenerator />
         </div>

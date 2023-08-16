@@ -69,7 +69,7 @@ const TOTPTokenGenerator = () => {
                     token={token}
                   />
                 </div>
-                <QRCode value={`otpauth://totp/MyApp?secret=${secret}`} />
+                {/* <QRCode value={`otpauth://totp/MyApp?secret=${secret}`} /> */}
               </div>
             )}
           </div>

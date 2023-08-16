@@ -49,10 +49,9 @@ export default () => {
           pin: "1234",
         })
         .then((res) => {
-          // console.log(res);
-          if (!res?.data?.ok) {
+          if (res?.data?.code !== "000000") {
             setValidated(false);
-            setMessage(res?.data?.message);
+            setMessage(JSON.stringify(res?.data));
           } else {
             setValidated(true);
             setImageCode(res?.data?.data?.qrCode);
