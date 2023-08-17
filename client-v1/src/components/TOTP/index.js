@@ -3,10 +3,12 @@ import React from "react";
 import TotpGenerator from "../Register/index";
 import VerifierTotp from "./Verifier/index";
 import Home from "../Home/index";
+import SMS from "../SMS";
 
 function TOTP() {
   return (
     <div>
+      <SMS />
       <section className="section">
         <div
           className="container is-centered mt-2"
