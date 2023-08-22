@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+import AppContext from "../../../contexts";
 
 function OcraVerifier({ crCode }) {
-  const [userId, setUserId] = useState();
-  const [deviceId, setDeviceId] = useState();
+  const { contextValue, setContextValue } = useContext(AppContext);
+
+  const [userId, setUserId] = useState(contextValue?.userId);
+  const [deviceId, setDeviceId] = useState(contextValue?.deviceId);
   //   const [crCode, setCrCode] = useState(crCode);
   const [userOtp, setuserOtp] = useState("");
   const [messageInfo, setMessageInfo] = useState("");

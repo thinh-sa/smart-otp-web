@@ -24,7 +24,7 @@ export default () => {
 
   const inputRef = useRef(null);
 
-  //   const { imageQrCode, updateImageQrCode } = useContext(AppContext);
+  const { contextValue, setContextValue } = useContext(AppContext);
 
   // useEffect(() => {
   //   if (secret) {
@@ -59,6 +59,11 @@ export default () => {
               `User ID: ${res?.data?.data?.userId}. Device ID: ${res?.data?.data?.deviceId}. App ID: ${res?.data?.data?.appId}. 
               Secret Code: ${res?.data?.data?.secretKey}`
             );
+            setContextValue({
+              userId: res?.data?.data?.userId,
+              deviceId: res?.data?.data?.deviceId,
+              appId: res?.data?.data?.appId,
+            });
           }
         });
     } catch (err) {

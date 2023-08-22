@@ -28,11 +28,11 @@ const Alert = styled.div`
 `;
 
 export default () => {
-  // const { imageQrCode, updateImageQrCode } = useContext(AppContext);
-  // console.log(`imageQrCode::`, imageQrCode);
+  const { contextValue, setContextValue } = useContext(AppContext);
+
   const [inputCode, setInputCode] = useState("");
-  const [inputUserId, setInputUserId] = useState("");
-  const [inputDeviceId, setInputDeviceId] = useState("");
+  const [inputUserId, setInputUserId] = useState(contextValue?.userId);
+  const [inputDeviceId, setInputDeviceId] = useState(contextValue?.deviceId);
   const [validated, setValidated] = useState(false);
   const [infoMessage, setInfoMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -103,61 +103,61 @@ export default () => {
   };
 
   return (
-    <div>
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>TOTP Verifier</h2>
-        </div>
+    // <AppContext.Consumer>
+    <div className="App">
+      <div className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h2>TOTP Verifier</h2>
+      </div>
 
-        {infoMessage !== "" && (
-          <Alert type="success">
-            <strong>{infoMessage}</strong>
-          </Alert>
-        )}
-        {errorMessage !== "" && (
-          <Alert type="danger">
-            <strong>{errorMessage}</strong>
-          </Alert>
-        )}
-        <div style={{ marginTop: "50px" }}>
-          <form>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <input
-                style={{ padding: "8px 12px" }}
-                type="number"
-                placeholder="User ID"
-                value={inputUserId}
-                onChange={updateUserId}
-              />
-              <input
-                style={{ padding: "8px 12px" }}
-                type="number"
-                placeholder="Device ID"
-                value={inputDeviceId}
-                onChange={updateDeviceId}
-              />
-              <input
-                style={{ padding: "8px 12px" }}
-                type="text"
-                placeholder="User OTP"
-                value={inputCode}
-                onChange={updateInputCode}
-              />
-            </div>
-            <div className="control has-text-centered pt-3 mt-4">
-              <button
-                disabled={!validated}
-                className="button is-link"
-                type="submit"
-                onClick={verifyTotp}
-              >
-                Verify
-              </button>
-            </div>
-          </form>
-        </div>
+      {infoMessage !== "" && (
+        <Alert type="success">
+          <strong>{infoMessage}</strong>
+        </Alert>
+      )}
+      {errorMessage !== "" && (
+        <Alert type="danger">
+          <strong>{errorMessage}</strong>
+        </Alert>
+      )}
+      <div style={{ marginTop: "50px" }}>
+        <form>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <input
+              style={{ padding: "8px 12px" }}
+              type="number"
+              placeholder="User ID"
+              value={inputUserId}
+              onChange={updateUserId}
+            />
+            <input
+              style={{ padding: "8px 12px" }}
+              type="number"
+              placeholder="Device ID"
+              value={inputDeviceId}
+              onChange={updateDeviceId}
+            />
+            <input
+              style={{ padding: "8px 12px" }}
+              type="text"
+              placeholder="User OTP"
+              value={inputCode}
+              onChange={updateInputCode}
+            />
+          </div>
+          <div className="control has-text-centered pt-3 mt-4">
+            <button
+              disabled={!validated}
+              className="button is-link"
+              type="submit"
+              onClick={verifyTotp}
+            >
+              Verify
+            </button>
+          </div>
+        </form>
       </div>
     </div>
+    // </AppContext.Consumer>
   );
 };
